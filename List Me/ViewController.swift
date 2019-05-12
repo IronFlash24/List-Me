@@ -10,7 +10,8 @@ import UIKit
 
 class ListMeViewController: UITableViewController {
     
-    let itemArray = ["classes","test","back home"]
+    var itemArray = ["classes","test","back home"]
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +41,26 @@ class ListMeViewController: UITableViewController {
             tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         }
     
-    
-    
-    
-
 }
+    
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Add a New Item", message: "", preferredStyle: .alert)
+        var textField = UITextField()
+        
+        let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+            print("success")
+            //print(textField.text)
+            self.itemArray.append(textField.text!)
+            self.tableView.reloadData()
+        }
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Crete new item"
+            textField = alertTextField
+        }
+        alert.addAction(action)
+        
+        present(alert,animated: true,completion: nil)
+    }
+    
 
 }
