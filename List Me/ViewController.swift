@@ -11,11 +11,14 @@ import UIKit
 class ListMeViewController: UITableViewController {
     
     var itemArray = ["classes","test","back home"]
-    
+    let defaluts = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let items = defaluts.array(forKey: "TodoListArray") as? [String]{
+            itemArray = items
+        }
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -51,6 +54,9 @@ class ListMeViewController: UITableViewController {
             print("success")
             //print(textField.text)
             self.itemArray.append(textField.text!)
+            
+            self.defaluts.set(self.itemArray, forKey: "TodoListArray")
+            
             self.tableView.reloadData()
         }
         alert.addTextField { (alertTextField) in
