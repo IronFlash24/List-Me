@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77113A992288A3BB00CB398D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77113A982288A3BB00CB398D /* Item.swift */; };
 		7712852B22874993006BBED8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712852A22874993006BBED8 /* AppDelegate.swift */; };
 		7712852D22874993006BBED8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712852C22874993006BBED8 /* ViewController.swift */; };
 		7712853022874993006BBED8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7712852E22874993006BBED8 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		77113A982288A3BB00CB398D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7712852722874993006BBED8 /* List Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "List Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7712852A22874993006BBED8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7712852C22874993006BBED8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		77113A9A2288A3EA00CB398D /* data model */ = {
+			isa = PBXGroup;
+			children = (
+				77113A982288A3BB00CB398D /* Item.swift */,
+			);
+			path = "data model";
+			sourceTree = "<group>";
+		};
+		77113A9B2288A40200CB398D /* supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				7712853122874994006BBED8 /* Assets.xcassets */,
+				7712853322874994006BBED8 /* LaunchScreen.storyboard */,
+			);
+			path = "supporting files";
+			sourceTree = "<group>";
+		};
 		7712851E22874992006BBED8 = {
 			isa = PBXGroup;
 			children = (
@@ -99,9 +118,9 @@
 			children = (
 				7712852A22874993006BBED8 /* AppDelegate.swift */,
 				7712852C22874993006BBED8 /* ViewController.swift */,
+				77113A9A2288A3EA00CB398D /* data model */,
 				7712852E22874993006BBED8 /* Main.storyboard */,
-				7712853122874994006BBED8 /* Assets.xcassets */,
-				7712853322874994006BBED8 /* LaunchScreen.storyboard */,
+				77113A9B2288A40200CB398D /* supporting files */,
 				7712853622874994006BBED8 /* Info.plist */,
 			);
 			path = "List Me";
@@ -257,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7712852D22874993006BBED8 /* ViewController.swift in Sources */,
+				77113A992288A3BB00CB398D /* Item.swift in Sources */,
 				7712852B22874993006BBED8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
