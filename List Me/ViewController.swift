@@ -12,25 +12,21 @@ class ListMeViewController: UITableViewController {
     
     var itemArray = [item]()
     let defaluts = UserDefaults.standard
+     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let newItem1 = item()
-        newItem1.title = "Find Mike"
-        itemArray.append(newItem1)
+       
         
-        let newItem2 = item()
-        newItem2.title = "Buy Eggs"
-        itemArray.append(newItem2)
+        print(dataFilePath!)
         
-        let newItem3 = item()
-        newItem3.title = "Destroy Demogorgan"
-        itemArray.append(newItem3)
+
+        loadItems()
         
-        if let items = defaluts.array(forKey: "TodoListArray") as? [item]{
-            itemArray = items
-        }
+//        if let items = defaluts.array(forKey: "TodoListArray") as? [item]{
+//            itemArray = items
+//        }
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -60,14 +56,9 @@ class ListMeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
-// THE ABOVE LINE IS THE SAME AS THE BOTTOM CODE
-        
-//        if itemArray[indexPath.row].done == false{
-//            itemArray[indexPath.row].done = true
-//        } else {
-//            itemArray[indexPath.row].done = false
-//        }
-        tableView.reloadData()
+
+        saveItems()
+      
         tableView.deselectRow(at: indexPath, animated: true)
 
 
@@ -85,7 +76,8 @@ class ListMeViewController: UITableViewController {
             
             self.itemArray.append(newItem)
             
-            self.defaluts.set(self.itemArray, forKey: "TodoListArray")
+            
+            self.saveItems()
             
             self.tableView.reloadData()
         }
@@ -98,5 +90,29 @@ class ListMeViewController: UITableViewController {
         present(alert,animated: true,completion: nil)
     }
     
+    func saveItems(){
+        let encoder = PropertyListEncoder()
+        
+        
+        do{
+            let data = try encoder.encode(self.itemArray)
+            try data.write(to: self.dataFilePath!)
+            
+        }
+        catch{
+            print(error)
+        }
+    }
+    func loadItems(){
+        if let data = try? Data(contentsOf: dataFilePath!){
+            let decoder = PropertyListDecoder()
+            do{
+                try itemArray = decoder.decode([item].self, from: data)
+            }
+            catch{
+                print(error)
+            }
+        }
+    }
 
 }
